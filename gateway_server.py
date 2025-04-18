@@ -48,7 +48,8 @@ def handle_task():
         return jsonify({"error": "Bad message format"}), 400
 
     # Determine target agent based on keywords
-    if "use my local rag system" in user_text.lower():
+    if ("use my local rag system" in user_text.lower() or 
+        "use my local rag server" in user_text.lower()):
         target_agent_url = RAG_AGENT_URL
         print(f"Routing task {task_id} to RAG Agent ({target_agent_url})")
     else:
